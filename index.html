@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Raleway:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Loan Calculator</title>
+  </head>
+  <body>
+    <div id="success-message" class="message">Form successfully submitted!</div>
+    <div id="app">
+      <div class="container">
+        <h1 class="font-style font-style--title">
+          how much would you like <span class="_modify">to borrow?</span>
+        </h1>
+        <div class="calculator">
+          <form id="form" class="calculator__form">
+            <fieldset class="calculator__fieldset">
+              <div class="calculator__field">
+                <label class="calculator__field-wrap">
+                  <span class="font-style calculator__field-title"
+                    >borrow amount</span
+                  >
+                  <div class="progress js-progress">
+                    <input
+                      min="1000"
+                      max="20000"
+                      step="1000"
+                      value="1"
+                      class="progress__range js-slider-range js-range-money"
+                      type="range"
+                    />
+                    <div class="progress__value js-progress-value"></div>
+                  </div>
+                </label>
+                <div class="calculator__placeholder">
+                  <span class="font-style calculator__min">£1000</span>
+                  <span class="font-style calculator__max">£20k</span>
+                </div>
+                <h2
+                  class="font-style font-style--sub calculator__total-borrow js-borrow-amount"
+                >
+                  £1000.00
+                </h2>
+              </div>
+
+              <div class="calculator__field">
+                <label class="calculator__field-wrap">
+                  <span class="font-style calculator__field-title"
+                    >payment period</span
+                  >
+                  <div class="progress js-progress">
+                    <input
+                      min="1"
+                      max="15"
+                      step="1"
+                      value="1"
+                      class="progress__range js-slider-range js-range-years"
+                      type="range"
+                    />
+                    <div class="progress__value js-progress-value"></div>
+                  </div>
+                </label>
+                <div class="calculator__placeholder">
+                  <span class="font-style calculator__min">1 year</span>
+                  <span class="font-style calculator__max">15 years</span>
+                </div>
+                <h2
+                  class="font-style font-style--sub calculator__total-years js-year-amount"
+                >
+                  1 years
+                </h2>
+              </div>
+
+              <div class="calculator__field">
+                <span class="font-style calculator__field--deposit"
+                  >deposit date</span
+                >
+                <div class="calculator__placeholder">
+                  <h2 class="font-style calculator__precentage js-precentage">
+                    4,95%
+                  </h2>
+
+                  <input class="calculator__date js-date" type="text" />
+                </div>
+                <div class="calculator__method">
+                  <div class="calculator__banktransfer">
+                    <label class="font-style calculator__label"
+                      ><input
+                        class="calculator__radio js-input"
+                        type="checkbox"
+                        value="bank"
+                        checked
+                      />
+                      <span class="calculator__radio-fake"></span>
+                      deposit Bank transfer
+                    </label>
+                  </div>
+                  <div class="calculator__cashtransfer">
+                    <label class="font-style calculator__label"
+                      ><input
+                        class="calculator__radio js-input"
+                        type="checkbox"
+                        value="cash"
+                      />
+                      <span class="calculator__radio-fake"></span>
+                      Cash
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="calculator__result">
+              <div class="calculator__result-item">
+                <h2 class="font-style font-style--sub calculator__result-title">
+                  monthly payment
+                </h2>
+                <h3
+                  class="font-style font-style--title calculator__monthly-payment js-monthly-payment"
+                >
+                  £85.58
+                </h3>
+                <span class="font-style calculator__fees">fees include</span>
+              </div>
+
+              <div class="calculator__finalamounts">
+                <div
+                  class="calculator__finalamount calculator__finalamount--borrowing"
+                >
+                  <span
+                    class="font-style calculator__label calculator__result-caption"
+                    >borrowing</span
+                  >
+                  <h3
+                    class="font-style font-style--sub calculator__result-finalmoney js-borrow-amount"
+                  >
+                    £1,000.00
+                  </h3>
+                </div>
+                <div
+                  class="calculator__finalamount calculator__finalamount--repay"
+                >
+                  <span
+                    class="font-style calculator__label calculator__result-caption"
+                    >to repay</span
+                  >
+                  <h3
+                    class="font-style font-style--sub calculator__result-finalmoney js-repay"
+                  >
+                    £3,500.00
+                  </h3>
+                </div>
+              </div>
+              <button type="submit" class="btn font-style js-btn">
+                send form
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./src/js/main.js"></script>
+  </body>
+</html>

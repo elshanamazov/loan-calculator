@@ -1,0 +1,20 @@
+@import 'flatpickr/dist/flatpickr.css';
+
+.flatpickr-day {
+  border: none;
+  cursor: pointer;
+}
+
+.flatpickr-day.today {
+  background-color: var(--c-gray);
+  color: var(--c-light);
+}
+
+.flatpickr-day.selected {
+  background-color: var(--c-accent) !important;
+  color: var(--c-light);
+}
+
+.flatpickr-calendar {
+  display: none;
+}

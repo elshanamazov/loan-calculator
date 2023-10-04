@@ -1,0 +1,16 @@
+:root {
+  // base
+  --font-main: 'Raleway', sans-serif;
+  --font-secondary: 'Open Sans', sans-serif;
+  --content-width: 1440px;
+  --container-offset: 40px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+  // colors
+  --c-light: #ffffff;
+  --c-light-gray: #f6f6f6;
+  --c-light-green: #e9fff6;
+  --c-dark: #000000;
+  --c-accent: #54d4a0;
+  --c-gray: #808080;
+}
