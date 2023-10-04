@@ -62,6 +62,7 @@ export const loanPrecentage = () => {
     dateFormat: 'd/m/Y',
     defaultDate: 'today',
     minDate: 'today',
+    icon: false,
     onChange: (selectedDates) => {
       const currentDate = new Date();
       currentDate.setMonth(currentDate.getMonth() + 3);
