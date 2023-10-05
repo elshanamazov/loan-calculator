@@ -59,10 +59,10 @@ const updateMonthlyPayment = () => {
 
 export const loanPrecentage = () => {
   initializeFlatpickr('.js-date', {
+    disableMobile: true,
     dateFormat: 'd/m/Y',
     defaultDate: 'today',
     minDate: 'today',
-    icon: false,
     onChange: (selectedDates) => {
       const currentDate = new Date();
       currentDate.setMonth(currentDate.getMonth() + 3);

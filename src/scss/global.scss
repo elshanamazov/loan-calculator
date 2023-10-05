@@ -36,6 +36,10 @@ body {
   max-width: var(--container-width);
   padding: 0 var(--container-offset);
   margin: 0 auto;
+
+  @include xs {
+    padding: 0 20px;
+  }
 }
 
 .font-style {
@@ -69,6 +73,9 @@ body {
     font-weight: 700;
     text-align: center;
     color: var(--c-dark);
+    @include sm {
+      font-size: 38px;
+    }
   }
 
   & ._modify {
