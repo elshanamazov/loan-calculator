@@ -1,6 +1,6 @@
 import '../scss/style.scss';
 import './form.js';
-import { loanPrecentage, rangeValue } from './loan-calculator';
+import { loanDate, rangeValue } from './loancalc';
 
+loanDate();
 rangeValue();
-loanPrecentage();
