@@ -98,6 +98,12 @@ const handleDateChange = (selectedDates) => {
   } else {
     interestRate = 4.95;
   }
+
+  isCash = false;
+  radioInputs.forEach((e) => {
+    e.value === 'cash' ? (e.checked = false) : (e.checked = true);
+  });
+
   updateLoanPercentage();
   updateMonthlyPayment();
 };
