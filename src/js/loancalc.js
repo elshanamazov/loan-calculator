@@ -1,50 +1,38 @@
-import initializeFlatpickr from './calendar';
-
 const radioInputs = document.querySelectorAll('.js-input');
-const loanPrecentageAmount = document.querySelector('.js-amount-precentage');
+const loanPercentageAmount = document.querySelector('.js-amount-percentage');
+const calculatorFieldset = document.querySelector('.calculator__fieldset');
+const customRanges = document.querySelectorAll('.js-slider-range');
+
 let interestRate = 4.95;
 let isCash = false;
 
-export const rangeValue = () => {
-  const customRanges = document.querySelectorAll('.js-slider-range');
+const updateProgressBar = (e) => {
   const rangeProgressesValue = document.querySelectorAll('.js-progress-value');
+  const borrowAmount = document.querySelectorAll('.js-borrow-amount');
+  const yearsAmount = document.querySelector('.js-year-amount');
 
-  customRanges.forEach((e, i) => {
-    const updateProgressBar = () => {
-      const borrowAmount = document.querySelectorAll('.js-borrow-amount');
-      const yearsAmount = document.querySelector('.js-year-amount');
-      const value = parseInt(e.value);
-      const min = parseInt(e.min);
-      const max = parseInt(e.max);
-      const clampedValue = Math.min(Math.max(value, min), max);
+  const value = parseInt(e.value);
+  const min = parseInt(e.min);
+  const max = parseInt(e.max);
+  const clampedValue = Math.min(Math.max(value, min), max);
+  const getValue = ((e.value - e.min) / (e.max - e.min)) * 100;
+  const index = getIndexOfRange(e);
 
-      const getValue = ((e.value - e.min) / (e.max - e.min)) * 100;
-      rangeProgressesValue[i].style.width = getValue + '%';
-      if (e.classList.contains('js-range-money')) {
-        borrowAmount.forEach((e) => {
-          e.innerHTML = `£${clampedValue.toFixed(2)}`;
-        });
-      }
-      if (e.classList.contains('js-range-years')) {
-        yearsAmount.innerHTML = `${clampedValue} years`;
-      }
-    };
+  rangeProgressesValue[index].style.width = getValue + '%';
 
-    e.addEventListener('input', () => {
-      updateProgressBar();
-      updateMonthlyPayment();
+  if (e.classList.contains('js-range-money')) {
+    borrowAmount.forEach((e) => {
+      e.innerHTML = `£${clampedValue.toFixed(2)}`;
     });
-  });
+  }
+  if (e.classList.contains('js-range-years')) {
+    yearsAmount.innerHTML = `${clampedValue} years`;
+  }
 };
 
-export const loanDate = () => {
-  initializeFlatpickr('.js-date', {
-    disableMobile: true,
-    dateFormat: 'd/m/Y',
-    defaultDate: 'today',
-    minDate: 'today',
-    onChange: handleDateChange,
-  });
+const getIndexOfRange = (e) => {
+  const index = Array.from(customRanges).indexOf(e);
+  return index;
 };
 
 const handleRadioInput = (event) => {
@@ -89,7 +77,7 @@ radioInputs.forEach((radio) => {
   radio.addEventListener('input', handleRadioInput);
 });
 
-const handleDateChange = (selectedDates) => {
+export const handleDateChange = (selectedDates) => {
   const currentDate = new Date();
   currentDate.setMonth(currentDate.getMonth() + 3);
 
@@ -109,5 +97,13 @@ const handleDateChange = (selectedDates) => {
 };
 
 const updateLoanPercentage = () => {
-  loanPrecentageAmount.textContent = `${interestRate.toLocaleString('ru-RU')}%`;
+  loanPercentageAmount.textContent = `${interestRate.toLocaleString('ru-RU')}%`;
 };
+
+calculatorFieldset.addEventListener('input', ({ target }) => {
+  if (target.classList.contains('js-slider-range')) {
+    const index = getIndexOfRange(target);
+    updateProgressBar(target, index);
+    updateMonthlyPayment();
+  }
+});

@@ -1,6 +1,12 @@
 import '../scss/style.scss';
+import initializeFlatpickr from './flatpickr.js';
 import './form.js';
-import { loanDate, rangeValue } from './loancalc';
+import { handleDateChange } from './loancalc';
 
-loanDate();
-rangeValue();
+initializeFlatpickr('.js-date', {
+  disableMobile: true,
+  dateFormat: 'd/m/Y',
+  defaultDate: 'today',
+  minDate: 'today',
+  onChange: handleDateChange,
+});
